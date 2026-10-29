@@ -5,12 +5,12 @@ import matplotlib.pyplot as plt
 
 # 生成线性数据（y = 3x + 2 + 噪声）
 np.random.seed(0)
-torch.manual_seed(0)
+torch.manual_seed(0) # 设置PyTorch的随机种子
 
-x = np.linspace(-10, 10, 100)
-y = 3 * x + 2 + np.random.normal(0, 5, size=x.shape)
+x = np.linspace(-10, 10, 100) # 生成100个点
+y = 3 * x + 2 + np.random.normal(0, 5, size=x.shape) # 添加噪声，标准差为5
 
-x_tensor = torch.tensor(x, dtype=torch.float32).unsqueeze(1)
+x_tensor = torch.tensor(x, dtype=torch.float32).unsqueeze(1) # 转换为PyTorch张量并调整形状为 (100, 1), 100行1列的向量
 y_tensor = torch.tensor(y, dtype=torch.float32).unsqueeze(1)
 
 # 定义模型、损失与优化器
